@@ -1,0 +1,8 @@
+{
+    "Username": "your_username",
+    "Password": "your_password",
+    "ipServer": "127.0.0.2",
+    "portConfigServer": 12345,
+    "portChartServer": 54321
+}
+  
