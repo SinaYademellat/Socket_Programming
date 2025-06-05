@@ -1,7 +1,7 @@
 import socket
 from file_manager import FileManager 
-
-# ======================================== fub =====================
+import random
+# ================================================================================
 def isIpV4(inputIp:str)->bool:
     try:
         socket.inet_pton(socket.AF_INET, inputIp)
@@ -53,7 +53,7 @@ def check_socket_bindable(ip,port)->bool:
             except OSError as e:
                 return False
 
-# ======================================== class =====================
+# ================================================================================
 class ServerClass:
     def __init__(self) -> None:
         self._Ip   = "x.x.x.x"
@@ -65,6 +65,9 @@ class ServerClass:
         self.__subNet       = None
         self._UserName      = None
         self._Password      = None
+
+        self.current_request_list = None
+        self.curentPassword   = ''
 
     def __repr__(self) -> str:
         return (f"Ip     = {self._Ip}  \nport   = {self._Port}")
@@ -188,28 +191,52 @@ class ServerClass:
         codeNumber = -1
         inputRequstList = inputData.split()
         try:
-            codeNumber = int(inputRequstList[0])
+            codeNumber            = int(inputRequstList[0])
+            self.current_request_list = inputRequstList
             return codeNumber
         except ValueError:
             print('Erro --> code part of request')
-
         return codeNumber
 
+    def handle_request_code1(self):
+        #(Authentication)  : type UserName Password
+        if((self.current_request_list[1] == self._UserName) and ((self.current_request_list[2] == self._Password))):
+            number = random.randint(0, 1000)
+            self.curentPassword = number
+            return str(number)
+        else:
+            return '-1'
+    def handle_request_code2(self):
+        #(Data)  : type ? ?
+        return 'Not'
+
+    def creatServerAnsser(self , type_of_code ) -> str:
+        if(type_of_code == 1):
+            return self.handle_request_code1()
+        elif(type_of_code == 2):
+            return self.handle_request_code2()
 
     def handle_client_connection(self,number):
         try:
-            conn_client , addr_client =self.listen_for_connection(number)
+            conn_client , addr_client = self.listen_for_connection(number)
             print(f"[{number}]{'Connected by':20}{addr_client}")
-            data_raw = conn_client.recv(1024)
+            data_raw       = conn_client.recv(1024)
             data_of_client = data_raw.decode()
 
             resurtParser = self.parse_client_data(inputData = data_of_client)
             # result
             print('[p]','~'*18,'> ',resurtParser)
+            
+            Ansser_is = self.creatServerAnsser(type_of_code = resurtParser)
+            print('[A]','~'*18,'> ',Ansser_is)
+
+            conn_client.send(Ansser_is.encode())
+            conn_client.close()
             print("-"*50)
 
-            sendIt = str(resurtParser*2)
-            conn_client.send(sendIt.encode())
-            conn_client.close()
         except Exception as e:
             print(f"<< {number} >>  Error: {e}")
+
+# +++++++++++++++++++++++++++++++++++++++++
+
+
