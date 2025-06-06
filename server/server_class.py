@@ -1,6 +1,9 @@
 import socket
-from file_manager import FileManager 
+import numpy as np
+import os
 import random
+
+from file_manager import FileManager 
 # ================================================================================
 def isIpV4(inputIp:str)->bool:
     try:
@@ -32,12 +35,9 @@ def is_valid_credentials_string(input_string) -> bool:
     if not isinstance(input_string, str):
         print("Error: Input is not a string.")
         return False
-    
     if (len(input_string)==0):
         print("Error: Input string cannot be empty.")
         return False
-    
-
     tmplist = input_string.split()
     if(len(tmplist)!=1):
         print("Error: Input string cannot contain whitespace.")
@@ -53,6 +53,15 @@ def check_socket_bindable(ip,port)->bool:
             except OSError as e:
                 return False
 
+def DataLoader(dataPath:str):
+    if not os.path.exists(dataPath):
+        print(f"File not found: {dataPath}")
+        return None
+    loaded_data = np.load(dataPath)
+    print('shape:', loaded_data.shape)
+    return loaded_data
+
+
 # ================================================================================
 class ServerClass:
     def __init__(self) -> None:
@@ -67,7 +76,9 @@ class ServerClass:
         self._Password      = None
 
         self.current_request_list = None
-        self.curentPassword   = ''
+        self.curentPassword   = 'testPasspart2'
+        self.raw_data = DataLoader(dataPath='GenerateData/my_data.npy')
+        self.index_dataLoder = 0
 
     def __repr__(self) -> str:
         return (f"Ip     = {self._Ip}  \nport   = {self._Port}")
@@ -122,7 +133,7 @@ class ServerClass:
             return True
         else:
             return False
-        
+
     def __checkPassword(self)->bool:
         tmpPassword = self.ServerConfig['Password']
         if(is_valid_credentials_string(tmpPassword)):
@@ -145,20 +156,20 @@ class ServerClass:
             print(f"{'Port':14} is Wrong!")
             return False
         # ---------------------
+        # (3)
         if(check_socket_bindable(self._Ip , self._Port)):
             print(f'{"can Bind":14} {self._Ip}:{self._Port}')
         else:
             print(f'{"Cannot Bind":14} {self._Ip}:{self._Port}')
             return False
         # ---------------------
-
-        # (3)
+        # (5)
         if(self.__checkUsername()):
             print(f"{'UserName':14} is set successfully.")
         else:
             print(f"{'UserName':14} is Wrong!")
             return False
-        # (4)
+        # (6)
         if(self.__checkPassword()):
             print(f"{'Password':14} is set successfully.")
         else:
@@ -189,6 +200,9 @@ class ServerClass:
 
     def parse_client_data(self, inputData: str) -> int:
         codeNumber = -1
+        if(len(inputData)==0):
+            print('Lne = 0')
+            return -1
         inputRequstList = inputData.split()
         try:
             codeNumber            = int(inputRequstList[0])
@@ -202,20 +216,50 @@ class ServerClass:
         #(Authentication)  : type UserName Password
         if((self.current_request_list[1] == self._UserName) and ((self.current_request_list[2] == self._Password))):
             number = random.randint(0, 1000)
-            self.curentPassword = number
+            self.curentPassword = str(number)
             return str(number)
         else:
             return '-1'
+
+    def SendOneRow(self,mode:str , numberSampling:str)->str:
+            sampelsize = int(numberSampling)
+
+            if(mode == 'Normal'):
+                dataList = list(self.raw_data[self.index_dataLoder%self.raw_data.shape[0]].data)
+                result = ' '.join(str(n) for n in dataList)
+                self.index_dataLoder += 1
+                return result
+            elif((mode == 'Max') and (self.raw_data.shape[1]%sampelsize ==0 )):
+                dataList = self.raw_data[self.index_dataLoder%self.raw_data.shape[0]]
+                result = list( [max(dataList[i:i+sampelsize].data) for i in range(0, len(dataList), sampelsize)] )
+                result = ' '.join(str(n) for n in result)
+                self.index_dataLoder += 1
+                return result
+            elif((mode == 'Min') and (self.raw_data.shape[1]%sampelsize ==0 )):
+                dataList = self.raw_data[self.index_dataLoder%self.raw_data.shape[0]]
+                result = list( [min(dataList[i:i+sampelsize].data) for i in range(0, len(dataList), sampelsize)] )
+                result = ' '.join(str(n) for n in result)
+                self.index_dataLoder += 1
+                return result
+            else:
+                print(">> Error >> SendOneRow")
+                return "MT"
+
     def handle_request_code2(self):
-        #(Data)  : type ? ?
-        return 'Not'
+        #(Data)  : type Passwor mode  Range
+        if(self.current_request_list[1] == self.curentPassword):
+            return self.SendOneRow(self.current_request_list[2] , self.current_request_list[3])
+        else:
+            return 'random number!'
 
     def creatServerAnsser(self , type_of_code ) -> str:
         if(type_of_code == 1):
             return self.handle_request_code1()
         elif(type_of_code == 2):
             return self.handle_request_code2()
-
+        else:
+            return 'Error in code part'
+        
     def handle_client_connection(self,number):
         try:
             conn_client , addr_client = self.listen_for_connection(number)
@@ -224,7 +268,7 @@ class ServerClass:
             data_of_client = data_raw.decode()
 
             resurtParser = self.parse_client_data(inputData = data_of_client)
-            # result
+            print('resurtParser: ',resurtParser)
             print('[p]','~'*18,'> ',resurtParser)
             
             Ansser_is = self.creatServerAnsser(type_of_code = resurtParser)
