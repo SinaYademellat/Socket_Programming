@@ -11,7 +11,6 @@ private:
 
     QString generate_Authentication();
     QString generate_DefaultRequest();
-//    QString generate_SamplingRequest();
 
 public:
     generateMessage();

@@ -25,12 +25,6 @@ QString generateMessage::generate_Authentication()
      return resultIs;
  }
 
-
-// -------------------------------------------------------
-//    QString generate_SamplingRequest();
-
-
-
 //  +++++++++++++++ << public >> ++++++++++++++
 
 void generateMessage::setCodeMessage(int codeIS)

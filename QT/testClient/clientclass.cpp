@@ -1,5 +1,6 @@
 #include "clientclass.h"
 #include <QTcpSocket>
+#include <QRegularExpression>
 
 ClientClassTcp::ClientClassTcp()
 {
@@ -51,10 +52,11 @@ QString ClientClassTcp::client_request()
         qDebug() << "Connection failed:" << _socket.errorString();
         return "Connection failed";
     }
-    qDebug()<<"[+] " << "Connect " << _serverIP << ":" << _serverPort <<"...";
+    qDebug()<<"[try] " << "Connect " << _serverIP << ":" << _serverPort <<"...";
 
     //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     QString message = this->_generater.Run();
+    qDebug() << "MessageIS " <<message;
     //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -67,11 +69,13 @@ QString ClientClassTcp::client_request()
         qDebug() << "Server Anser :" << QString::fromUtf8(response);
         _socket.close();
         qDebug() << " ~~~~~~~~~~~~~~~~~~~~~ << finish >> ~~~~~~~~~~~~~~~~~~~~~ ";
+        this->Connection = true;
         return  QString::fromUtf8(response);;
     }
     else
     {
         qDebug() << "time out from server";
+        this->Connection = false;
          _socket.close();
          return "time out from server";
     }
@@ -91,23 +95,38 @@ void ClientClassTcp::handle_client_request(int codeMessageIS , QStringList  para
         if((Server_Anser == "Connection failed")  || Server_Anser == "time out from server")
             {return;}
 
-
-
         switch (codeMessageIS)
         {
-        case 1:
-                if(Server_Anser=="-1")
-                {
-                    qDebug()<<"wrong password or userName";
-                }
-                else
-                {
-                    qDebug()<<"NewPassword: "<<Server_Anser;
-                    this->uniqCode = Server_Anser;
-                }
-                break;
-        default:
+        case 1:{
+            if(Server_Anser=="-1")
+            {
+                qDebug()<<"wrong password or userName";
+                this->passwordAndUsername= false;
+            }
+            else
+            {
+                qDebug()<<"NewPassword: "<<Server_Anser;
+                this->uniqCode = Server_Anser;
+                this->passwordAndUsername= true;
+            }
             break;
+            }
+        case 2:{
+            qDebug()<<Server_Anser;
+            QStringList parts = Server_Anser.split(QRegularExpression("\\s+"), Qt::SkipEmptyParts);
+            this->server_anserData.clear();
+            for (const QString &part : std::as_const(parts))
+            {
+                this->server_anserData.append(part.toInt());
+            }
+
+            break;
+             }
+
+        default:{
+            qDebug()<<"";
+            break;
+                }
         }
 
         return;
