@@ -163,13 +163,13 @@ class ServerClass:
             print(f'{"Cannot Bind":14} {self._Ip}:{self._Port}')
             return False
         # ---------------------
-        # (5)
+        # (4)
         if(self.__checkUsername()):
             print(f"{'UserName':14} is set successfully.")
         else:
             print(f"{'UserName':14} is Wrong!")
             return False
-        # (6)
+        # (5)
         if(self.__checkPassword()):
             print(f"{'Password':14} is set successfully.")
         else:
