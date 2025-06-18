@@ -1,9 +1,6 @@
 #include "mainwindow.h"
-#include "clientclass.h"
-#include <QApplication>
-#include <QDebug>
 
-ClientClassTcp MainClientIs_Global;
+#include <QApplication>
 
 int main(int argc, char *argv[])
 {

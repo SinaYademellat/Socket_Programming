@@ -12,6 +12,7 @@ ClientClassTcp::ClientClassTcp(QString serverIP_input, quint16 serverPort_input)
 {
     this->_serverIP = serverIP_input;
     this->_serverPort = serverPort_input;
+    this->server_anserData.clear();
 }
 
 // +++++++++++++++ << private >> ++++++++++++++
@@ -76,8 +77,8 @@ QString ClientClassTcp::client_request()
     {
         qDebug() << "time out from server";
         this->Connection = false;
-         _socket.close();
-         return "time out from server";
+        _socket.close();
+        return "time out from server";
     }
 
 }
@@ -86,51 +87,52 @@ QString ClientClassTcp::client_request()
 
 void ClientClassTcp::handle_client_request(int codeMessageIS , QStringList  parametersIS)
 {
-        this->_generater.setCodeMessage(codeMessageIS);
-        this->_generater.setParameters(parametersIS);
+    this->_generater.setCodeMessage(codeMessageIS);
+    this->_generater.setParameters(parametersIS);
 
-        QString Server_Anser = this->client_request();
+    QString Server_Anser = this->client_request();
 
 
-        if((Server_Anser == "Connection failed")  || Server_Anser == "time out from server")
-            {return;}
-
-        switch (codeMessageIS)
-        {
-        case 1:{
-            if(Server_Anser=="-1")
-            {
-                qDebug()<<"wrong password or userName";
-                this->passwordAndUsername= false;
-            }
-            else
-            {
-                qDebug()<<"NewPassword: "<<Server_Anser;
-                this->uniqCode = Server_Anser;
-                this->passwordAndUsername= true;
-            }
-            break;
-            }
-        case 2:{
-            qDebug()<<Server_Anser;
-            QStringList parts = Server_Anser.split(QRegularExpression("\\s+"), Qt::SkipEmptyParts);
-            this->server_anserData.clear();
-            for (const QString &part : std::as_const(parts))
-            {
-                this->server_anserData.append(part.toInt());
-            }
-
-            break;
-             }
-
-        default:{
-            qDebug()<<"";
-            break;
-                }
-        }
-
+    if((Server_Anser == "Connection failed")  || Server_Anser == "time out from server")
+    {
+        this->Connection= false;
         return;
+    }
+
+    switch (codeMessageIS)
+    {
+    case 1:{
+        if(Server_Anser == "-1")
+        {
+            qDebug()<<"wrong password or userName";
+            this->passwordAndUsername= false;
+        }
+        else
+        {
+            qDebug()<<"NewPassword: "<<Server_Anser;
+            this->token = Server_Anser;
+            this->passwordAndUsername= true;
+        }
+        break;
+    }
+    case 2:{
+        qDebug()<<Server_Anser;
+        QStringList parts = Server_Anser.split(QRegularExpression("\\s+"), Qt::SkipEmptyParts);
+        this->server_anserData.clear();
+        for (const QString &part : std::as_const(parts))
+        {
+            this->server_anserData.append(part.toInt());
+        }
+        break;
+    }
+
+    default:
+        {
+        qDebug()<<"";
+        break;
+        }
+    }
+
+    return;
 
 }
-
-

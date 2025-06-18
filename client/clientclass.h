@@ -8,7 +8,7 @@ class ClientClassTcp
 {
 private:
     generateMessage _generater;
-// ----------------------------------------
+    // ----------------------------------------
     bool isValidIp();
     bool isValidPort();
     bool canConnectToServer();
@@ -16,7 +16,10 @@ private:
 public:
     QString _serverIP ;
     quint16 _serverPort ;
-    QString uniqCode = "";
+    QString _userName = "";
+    QString _passWord = "";
+    QString token = "";
+
     QList<int>  server_anserData;
 
     ClientClassTcp();

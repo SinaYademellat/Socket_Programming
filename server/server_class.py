@@ -98,7 +98,7 @@ class ServerClass:
             subNetBinary  = calculate_subnet(ipBinary , maskBinary)
             print('~'*20 ,'<< ipServer info >>','~'*20)
             print('|',f'(  ip ) {inputIpstr} :'         , ipBinary,'|')
-            print('|',f'( Mask) {self._subMask} :' , maskBinary,'|')
+            print('|',f' Mask {self._subMask}' , maskBinary,'|')
             
             self.__subNet = binaryToDsimal(subNetBinary) 
             print('|',f'( Net ) {self.__subNet} :', subNetBinary,'|')
@@ -250,7 +250,7 @@ class ServerClass:
         if(self.current_request_list[1] == self.curentPassword):
             return self.SendOneRow(self.current_request_list[2] , self.current_request_list[3])
         else:
-            return 'random number!'
+            return 'Wrong Token'
 
     def creatServerAnsser(self , type_of_code ) -> str:
         if(type_of_code == 1):
