@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1027</width>
-    <height>551</height>
+    <width>1389</width>
+    <height>605</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -308,7 +308,7 @@ QRadioButton::indicator:unchecked:hover {
      <rect>
       <x>750</x>
       <y>10</y>
-      <width>275</width>
+      <width>281</width>
       <height>121</height>
      </rect>
     </property>
@@ -379,7 +379,7 @@ QCheckBox::indicator:unchecked:hover {
       <rect>
        <x>47</x>
        <y>47</y>
-       <width>124</width>
+       <width>130</width>
        <height>28</height>
       </rect>
      </property>
@@ -415,7 +415,7 @@ QLineEdit:focus {
       <rect>
        <x>47</x>
        <y>12</y>
-       <width>124</width>
+       <width>130</width>
        <height>28</height>
       </rect>
      </property>
@@ -452,10 +452,10 @@ QLineEdit:focus {
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QComboBox" name="colorCombox_2">
+    <widget class="QComboBox" name="colorCombox_2_Min">
      <property name="geometry">
       <rect>
-       <x>178</x>
+       <x>184</x>
        <y>47</y>
        <width>85</width>
        <height>28</height>
@@ -482,10 +482,10 @@ QComboBox QAbstractItemView {
 }</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="colorCombox_1">
+    <widget class="QComboBox" name="colorCombox_1_Max">
      <property name="geometry">
       <rect>
-       <x>178</x>
+       <x>184</x>
        <y>12</y>
        <width>85</width>
        <height>28</height>
@@ -555,12 +555,12 @@ QCheckBox::indicator:unchecked:hover {
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_form4">
+    <widget class="QPushButton" name="pushButton_form4_Filter">
      <property name="geometry">
       <rect>
-       <x>12</x>
+       <x>47</x>
        <y>82</y>
-       <width>222</width>
+       <width>130</width>
        <height>27</height>
       </rect>
      </property>
@@ -586,14 +586,48 @@ QPushButton:pressed {
 </string>
      </property>
      <property name="text">
-      <string>Ok</string>
+      <string>Filter</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_form4_Clean">
+     <property name="geometry">
+      <rect>
+       <x>184</x>
+       <y>82</y>
+       <width>85</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+color: #00CFFF;
+font-size: 16px;
+font-weight: bold;
+background-color: #2C3E50;
+padding: 4px 8px;
+border-radius: 5px;
+}
+
+QPushButton:hover {
+    background-color: #1ABC9C;
+    color: black;
+}
+
+QPushButton:pressed {
+    background-color: #16A085;
+    border: 1px solid #16A085;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>clean</string>
      </property>
     </widget>
     <widget class="QLabel" name="statusIcon_form1_2">
      <property name="geometry">
       <rect>
-       <x>240</x>
-       <y>90</y>
+       <x>12</x>
+       <y>84</y>
        <width>22</width>
        <height>22</height>
       </rect>
@@ -1035,8 +1069,8 @@ background-color: transparent;
      <rect>
       <x>10</x>
       <y>140</y>
-      <width>1011</width>
-      <height>381</height>
+      <width>1371</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -1295,7 +1329,7 @@ background-color: transparent;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1027</width>
+     <width>1389</width>
      <height>25</height>
     </rect>
    </property>

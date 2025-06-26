@@ -4,12 +4,18 @@ BasicFunctions::BasicFunctions(){};
 
 void BasicFunctions::AddColorItemToQcomBox(QComboBox *combox ,const QList<QColor> &colorsItem)
 {
+    // mycode { Qt::red, Qt::green, Qt::blue, Qt::yellow, Qt::gray };
+    // 0 --> Red
+    // ....
+    // 4 --> Gray
+    int code = 0 ;
     for (const QColor &color : colorsItem)
     {
         QPixmap pixmap(24, 24);
         pixmap.fill(color);
         QIcon icon(pixmap);
-        combox->addItem(icon,"");
+        combox->addItem(icon, QString::number(code));
+        code+=1;
     }
 }
 

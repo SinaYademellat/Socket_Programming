@@ -6,10 +6,10 @@
 
 class BasicFunctions
 {
-
 public:
     BasicFunctions();
-    void AddColorItemToQcomBox(QComboBox *combox , const QList<QColor> &colorsItem);
+    void AddColorItemToQcomBox(QComboBox *combox ,const QList<QColor> &colorsItem);
+
     void SetGuiBlineBar(QSlider *myHorizonalSlider ,int minRang , int maxRang , int singleStep , int SetValue);
     void setServerStatusColor(QLabel *statusIcon ,QString colorIs );
 };

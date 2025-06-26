@@ -35,14 +35,15 @@ public:
 
 private slots:
 
-
-    void on_pushButton_form2_clicked();
-    void on_pushButton_form3_clicked();
-
     void on_pushButton_form1_Loggin_clicked();
 
+    void on_pushButton_form2_clicked();
 
-    void on_pushButton_form4_clicked();
+    void on_pushButton_form3_clicked();
+
+    void on_pushButton_form4_Filter_clicked();
+    void on_pushButton_form4_Clean_clicked();    
+
 
 private:
 
@@ -79,9 +80,16 @@ private:
 
     // -------------------
     QTimer *timer = nullptr;
+    bool _flag_wait_Thread = false ;
 
     void _checkThread();
+
+    void _filterPlot_minAndMax_mod(QString L_bound, QString L_code, QString U_bound, QString U_code);
+    // void _filterPlot_Min_mod();
+    // void _filterPlot_Max_mod();
+
     // ---------------------
+
 
 
 };

@@ -9,10 +9,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+
+    this->creatLoggingPageGui();
     // ++++++++++++++++++++++
     this->creat_GUi_Form3and4();
     // ----------------------
-    this->creatLoggingPageGui();
 }
 
 MainWindow::~MainWindow()
@@ -25,9 +26,11 @@ MainWindow::~MainWindow()
 
 /// \brief MainWindow::creat_GUi_Form3and4
 void MainWindow::creat_GUi_Form3and4(){
-    QList<QColor>  colorsFor_colorCombo = { Qt::red, Qt::green, Qt::blue, Qt::yellow, Qt::gray };
-    mybasicfunctis.AddColorItemToQcomBox(ui->colorCombox_1 , colorsFor_colorCombo);
-    mybasicfunctis.AddColorItemToQcomBox(ui->colorCombox_2 , colorsFor_colorCombo);
+
+    QList<QColor>  colorsFor_colorCombo = this->chartTest1.colorsFor_colorCombo_IS;
+
+    mybasicfunctis.AddColorItemToQcomBox(ui->colorCombox_1_Max , colorsFor_colorCombo);
+    mybasicfunctis.AddColorItemToQcomBox(ui->colorCombox_2_Min , colorsFor_colorCombo);
     // ++++++++++++++++++++++
     // ------------
     mybasicfunctis.SetGuiBlineBar(ui->horizontalSlider_FPS,1,100,1,100);
@@ -43,10 +46,13 @@ void MainWindow::creatLoggingPageGui(){
     this->ui->Form3->hide();
     this->ui->Form4->hide();
     this->setGeometry(20,30,419,551);
+    // ui->frame_LoggingForm->show();
 }
 
 void MainWindow::creat_main_Form_Gui(){
-    this->resize(1027, 551);
+    // this->resize(1027, 551);
+    this->resize(1389, 605);
+
     ui->Form1->show();
     ui->Form2->show();
     ui->Form3->show();
@@ -136,7 +142,8 @@ bool MainWindow::_canUseDasBord()
         {
             colorForstatusIcon = "green";
             this->ui->label_Usernname->setText("Sina");
-            QString IpandPort = MainClientIs_Global._serverIP  + QString(" : ") + MainClientIs_Global._serverPort;
+            QString IpandPort = QString(MainClientIs_Global._serverIP) + QString(" : ") + QString::number(MainClientIs_Global._serverPort);
+            // qDebug()<<" << IpandPort >> "<< IpandPort ;
             this->ui->label_IP->setText(IpandPort);
             mybasicfunctis.setServerStatusColor(ui->statusIcon_form1_server ,colorForstatusIcon);
             return true;
@@ -289,6 +296,10 @@ void MainWindow::_SetModeOFChart()
 
 void MainWindow::on_pushButton_form2_clicked()
 {
+    if(this->_flag_wait_Thread){
+        return;
+    }
+
 
     if(ui->radioMax->isChecked())
     {
@@ -319,6 +330,7 @@ void MainWindow::_Sampling_Maximum_Ui()
     QString RangeNumber = ui->lineEdit_Range_form2->text();
     if (RangeNumber.isEmpty()) {
         QMessageBox::warning(this, "خالی بودن فایل" , " لطفا بازه را وراد کنید");
+        this->_flag_wait_Thread = true;
         return ;
     }
 
@@ -334,17 +346,20 @@ void MainWindow::_Sampling_Maximum_Ui()
             // Set Text of Request in UI
             QString show_client_Request = MainClientIs_Global.token +  " Max " + RangeNumber;
             this->ui->label_MessageIS->setText(show_client_Request);
+            this->_flag_wait_Thread = false;
             return;
         }
         else
         {
             QMessageBox::warning(this, "ورودی بازه" , " لطفا بازه انتخاب شده مقسوم‌علیه ۱۰۰ باشد");
+            this->_flag_wait_Thread = true;
             return;
         }
     }
     else
     {
         QMessageBox::warning(this, "ورودی بازه" , " لطفا بازه انتخاب شده عدد صیح باشد");
+        this->_flag_wait_Thread = true;
         return;
     }
 }
@@ -357,6 +372,7 @@ void MainWindow::_Sampling_Minimum_Ui()
     QString RangeNumber = ui->lineEdit_Range_form2->text();
     if (RangeNumber.isEmpty()) {
         QMessageBox::warning(this, "خالی بودن فایل" , " لطفا بازه را وراد کنید");
+        this->_flag_wait_Thread = true;
         return;
     }
     bool numIsok = false;
@@ -370,17 +386,20 @@ void MainWindow::_Sampling_Minimum_Ui()
             // Set Text of Request in UI
             QString show_client_Request = MainClientIs_Global.token +  " Min " + RangeNumber;
             this->ui->label_MessageIS->setText(show_client_Request);
+            this->_flag_wait_Thread = false;
             return;
         }
         else
         {
             QMessageBox::warning(this, "ورودی بازه" , " لطفا بازه انتخاب شده مقسوم‌علیه ۱۰۰ باشد");
+            this->_flag_wait_Thread = true;
             return;
         }
     }
     else
     {
         QMessageBox::warning(this, "ورودی بازه" , " لطفا بازه انتخاب شده عدد صیح باشد");
+        this->_flag_wait_Thread = true;
         return;
     }
 }
@@ -423,13 +442,15 @@ void MainWindow::_Server_Satution_For_requestCode2()
 
 
 ////////////////////////////////////////////////
-/// \brief MainWindow::on_pushButton_form2_clicked
+/// \brief MainWindow::on_pushButton_form3_clicked
 // ~~~~~~~~~~~~~~~~~~~~~~
 //  برسی فرم شماره سه
 // ~~~~~~~~~~~~~~~~~~~~~~
 
 void MainWindow::on_pushButton_form3_clicked()
 {
+    this->_flag_wait_Thread = false;
+
     double fpsminput = ui->horizontalSlider_FPS->value();
     int fps = static_cast<int> (fpsminput*1000);
 
@@ -468,8 +489,113 @@ void MainWindow::_checkThread(){
 
 
 
-void MainWindow::on_pushButton_form4_clicked()
+void MainWindow::_filterPlot_minAndMax_mod(QString L_bound, QString L_code, QString U_bound, QString U_code)
 {
-    qDebug()<<"------------";
+    if(this->MainClientIs_Global.server_anserData.size()>=1)
+    {
+        // low
+        bool canConvertToint_L_code;
+        int lowCodeIs = L_code.toInt(&canConvertToint_L_code);
+        bool canConvertToint_L_bound;
+        int Low_boundIS = L_bound.toInt(&canConvertToint_L_bound);
+
+        // Up
+        bool canConvertToint_U_Code;
+        int UpCodeIS = U_code.toInt(&canConvertToint_U_Code);
+        bool canConvertToint_U_bound;
+        int Up_boundIS = U_bound.toInt(&canConvertToint_U_bound);
+
+        // Run
+        this->chartTest1.plotChartWithMin_and_MaxFilter(ui->chartFrame ,this->MainClientIs_Global.server_anserData , Low_boundIS ,lowCodeIs , Up_boundIS , UpCodeIS );
+    }
+    else
+    {
+        qDebug()<<" List is EMTY";
+        return;
+    }
 }
+
+void MainWindow::on_pushButton_form4_Filter_clicked()
+{
+
+    // return;
+
+    if( (this->timer == nullptr) )
+    {
+        qDebug() << "Timer is Null :)" ;
+    }
+    else
+    {
+        qDebug() << "Stop" ;
+        this->timer->stop();
+    }
+
+    this->_Refresh_chart();
+    this->_SetModeOFChart();
+
+    QString code_Max_color = ui->colorCombox_1_Max->currentText();
+    QString code_Min_color = ui->colorCombox_2_Min->currentText();
+
+    QString bound_Max_color = ui->lineEdit_Max_form4->text();
+    QString bound_Min_color = ui->lineEdit_Min_form4->text();
+
+    // if(ui->checkBox_Min->isChecked()){
+    //     bool ok1;
+    //     int valuInt = bound_Min_color.toInt(&ok1);
+    //     bool ok2;
+    //     int lowCodeIs = code_Min_color.toInt(&ok2);
+    //     this->chartTest1.plotChartWithMinFilter(ui->chartFrame ,this->MainClientIs_Global.server_anserData ,  valuInt ,lowCodeIs );
+    // }
+
+    if((ui->checkBox_Max->isChecked() ) && (ui->checkBox_Min->isChecked() ))
+    {
+        // Max
+        bool ok1_Max;
+        int threshold_Max  = bound_Max_color.toInt(&ok1_Max);
+        bool ok2_Max;
+        int UpCodeIs = code_Max_color.toInt(&ok2_Max);
+        // Min
+        bool ok1_Min;
+        int threshold_Min  = bound_Min_color.toInt(&ok1_Min);
+        bool ok2_Min;
+        int lowCodeIs = code_Min_color.toInt(&ok2_Min);
+
+        this->chartTest1.plotChartWithMin_and_MaxFilter(ui->chartFrame ,this->MainClientIs_Global.server_anserData ,threshold_Min,lowCodeIs,threshold_Max,UpCodeIs);
+    }
+    else if(ui->checkBox_Max->isChecked()){
+        // Max
+        bool ok1;
+        int threshold  = bound_Max_color.toInt(&ok1);
+
+        bool ok2;
+        int UpCodeIs = code_Max_color.toInt(&ok2);
+
+        this->chartTest1.plotChartWithMaxFilter(ui->chartFrame ,this->MainClientIs_Global.server_anserData ,  threshold  ,UpCodeIs );
+    }
+    else if(ui->checkBox_Min->isChecked()){
+        // Min
+        bool ok1;
+        int threshold  = bound_Min_color.toInt(&ok1);
+
+        bool ok2;
+        int lowCodeIs = code_Min_color.toInt(&ok2);
+
+        this->chartTest1.plotChartWithMinFilter(ui->chartFrame ,this->MainClientIs_Global.server_anserData ,  threshold  ,lowCodeIs );
+    }
+    else{
+        this->updateChart();
+        qDebug()<<"No check Box";
+    }
+
+
+}
+
+
+void MainWindow::on_pushButton_form4_Clean_clicked()
+{
+    this->updateChart();
+
+}
+
+
 
