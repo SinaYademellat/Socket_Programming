@@ -3,7 +3,7 @@
 loginhandler::loginhandler(ClientClassTcp* clientData):curentclient(clientData) {}
 
 
-bool loginhandler::_check_Ip_Gui(const QString &ip)
+bool loginhandler::validateAndSet_IP(const QString &ip)
 {
     if (ip.isEmpty()) {
         return false;
@@ -14,7 +14,7 @@ bool loginhandler::_check_Ip_Gui(const QString &ip)
     }
 }
 
-bool loginhandler::_check_Port_Gui(QMainWindow *window, const QString &port)
+bool loginhandler::validateAndSet_Port(QMainWindow *window, const QString &port)
 {
     if (port.isEmpty()) {
         QMessageBox::warning(window, "مقدار پورت", "پورت خالی هست");
@@ -38,7 +38,7 @@ bool loginhandler::_check_Port_Gui(QMainWindow *window, const QString &port)
 }
 
 
-bool loginhandler::_check_Username_Gui(const QString &username)
+bool loginhandler::validateAndSet_username(const QString &username)
 {
     if (username.isEmpty()) {
         return false;
@@ -50,7 +50,7 @@ bool loginhandler::_check_Username_Gui(const QString &username)
 }
 
 
-bool loginhandler::_check_Password_Gui(const QString &Password)
+bool loginhandler::validateAndSet_password(const QString &Password)
 {
     if (Password.isEmpty()) {
         return false;
@@ -69,7 +69,7 @@ bool loginhandler::validateFormInputs(QMainWindow *window, const QString& IP_inp
 {
 
     // ----------- IP
-    if(this->_check_Ip_Gui(IP_input)){
+    if(this->validateAndSet_IP(IP_input)){
         qDebug() << "IP is   :" << this->curentclient->_serverIP;
     }
     else{
@@ -77,14 +77,14 @@ bool loginhandler::validateFormInputs(QMainWindow *window, const QString& IP_inp
         return false;
     }
     // ----------- Port
-    if(this->_check_Port_Gui(window,Port_input)){
+    if(this->validateAndSet_Port(window,Port_input)){
         qDebug() << "Port is:" << this->curentclient->_serverPort;
     }
     else{
         return false;
     }
     // -----------
-    if(this->_check_Username_Gui(username_input)){
+    if(this->validateAndSet_username(username_input)){
         qDebug() << "username is:" << this->curentclient->_userName;
     }
     else{
@@ -92,7 +92,7 @@ bool loginhandler::validateFormInputs(QMainWindow *window, const QString& IP_inp
         return false;
     }
     // -----------
-    if(this->_check_Password_Gui(password_input)){
+    if(this->validateAndSet_password(password_input)){
         qDebug() << "Password is:" << this->curentclient->_passWord;
     }
     else{
