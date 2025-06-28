@@ -1,0 +1,11 @@
+<map id="ChartViewHelper::setupChartAppearance" name="ChartViewHelper::setupChartAppearance">
+<area shape="rect" id="Node000001" title="تنظیم ظاهر و ویژگی‌های پایه نمودار" alt="" coords="237,89,429,132"/>
+<area shape="rect" id="Node000002" href="$class_chart_view_helper.html#abd4eb32bfab5d868461c45557989322e" title="نمایش داده‌ها ورودی" alt="" coords="5,5,189,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="275,84,188,46,153,35,155,30,190,42,277,80"/>
+<area shape="rect" id="Node000003" href="$class_chart_view_helper.html#a7de649321e8d724b27a635423ea017b6" title="فیلتربالا گذر برای داه‌ها" alt="" coords="6,56,188,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,98,188,93,189,88,222,92"/>
+<area shape="rect" id="Node000004" href="$class_chart_view_helper.html#abddc2d2e850ec4bf222a1fe9717ce112" title="هم‌زمان فیلتر پایین‌گذر و بالاگذر" alt="" coords="6,123,188,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="222,129,189,134,188,128,221,124"/>
+<area shape="rect" id="Node000005" href="$class_chart_view_helper.html#a0cc0a295341a58f0e634c3cc133b56af" title="فیلترپایین گذر برای داه‌ها" alt="" coords="6,189,188,232"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="274,142,190,180,161,191,159,186,188,175,272,137"/>
+</map>

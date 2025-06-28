@@ -1,0 +1,11 @@
+<map id="ChartViewHelper::appendMaskedSeriesByLowerBound" name="ChartViewHelper::appendMaskedSeriesByLowerBound">
+<area shape="rect" id="Node000001" title="ساخت سری‌های کران بالا و کران پایین برای حساب کردن مساحت فیلترشده" alt="" coords="496,39,712,81"/>
+<area shape="rect" id="Node000002" href="$class_chart_view_helper.html#a15fb9c1de16ba306ee4319aa1d69bfaf" title="فیلتر بالا گذر و پایین گذر برای حالت پیوسته" alt="" coords="235,5,448,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="480,47,448,43,449,38,481,42"/>
+<area shape="rect" id="Node000004" href="$class_chart_view_helper.html#a51b15c958604a5917fd9bbcf9edf51b7" title="فیلتر پایین گذر برای حالت پیوسته" alt="" coords="247,72,436,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="481,78,436,84,436,79,480,73"/>
+<area shape="rect" id="Node000003" href="$class_chart_view_helper.html#abddc2d2e850ec4bf222a1fe9717ce112" title="هم‌زمان فیلتر پایین‌گذر و بالاگذر" alt="" coords="5,5,187,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="219,29,187,29,187,24,219,24"/>
+<area shape="rect" id="Node000005" href="$class_chart_view_helper.html#a0cc0a295341a58f0e634c3cc133b56af" title="فیلترپایین گذر برای داه‌ها" alt="" coords="5,72,187,115"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="231,96,187,96,187,91,231,91"/>
+</map>

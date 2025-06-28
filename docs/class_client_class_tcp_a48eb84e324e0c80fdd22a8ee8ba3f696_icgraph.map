@@ -1,0 +1,5 @@
+<map id="ClientClassTcp::send_client_request" name="ClientClassTcp::send_client_request">
+<area shape="rect" id="Node000001" title="ارسال درخواست به سرور و دریافت پاسخ" alt="" coords="210,5,356,48"/>
+<area shape="rect" id="Node000002" href="$class_client_class_tcp.html#a3fb8bd6983c0f027050a830932683c8c" title="ارسال درخواست به سرور و پردازش پاسخ دریافتی" alt="" coords="5,5,162,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,29,162,29,162,24,194,24"/>
+</map>

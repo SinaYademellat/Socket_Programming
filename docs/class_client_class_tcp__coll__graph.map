@@ -1,0 +1,5 @@
+<map id="ClientClassTcp" name="ClientClassTcp">
+<area shape="rect" id="Node000001" title="کلاس مدیریت اتصال در سمت کلاینت" alt="" coords="12,104,123,131"/>
+<area shape="rect" id="Node000002" href="$classgenerate_message.html" title="کلاس ساخت پیام برای ارتباط با سرور" alt="" coords="5,5,130,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,48,70,104,65,104,65,48"/>
+</map>

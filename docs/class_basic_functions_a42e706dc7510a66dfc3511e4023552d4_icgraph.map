@@ -1,0 +1,5 @@
+<map id="BasicFunctions::SetGuiBlineBar" name="BasicFunctions::SetGuiBlineBar">
+<area shape="rect" id="Node000001" title="مقداردهی به نوار لغزنده افقی" alt="" coords="242,5,450,32"/>
+<area shape="rect" id="Node000002" href="$class_gui_manager.html#a0f05c066bb9ad457f593dbd3115748cf" title="نمایش فرم‌های اصلی برنامه و مخفی کردن فرم ورود" alt="" coords="5,5,194,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,21,194,21,194,16,226,16"/>
+</map>
