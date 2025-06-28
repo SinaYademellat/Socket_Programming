@@ -93,3 +93,4 @@ python main.py
 - CMake
 - g++ or Visual Studio compiler
 
+![توضیح گیف](./gif/test1.gif)
