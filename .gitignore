@@ -1,4 +1,3 @@
 __pycache__/
-*.user
-# *.json
-# TMP/
+client/*.txt.user
+client/Doxyfile.bak

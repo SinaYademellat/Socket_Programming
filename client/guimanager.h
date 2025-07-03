@@ -21,7 +21,6 @@
  */
 class GuiManager
 {
-
 public:
 
     /**
@@ -31,7 +30,7 @@ public:
      */
     GuiManager();
 
-     /**
+    /**
      * @brief نمایش فرم ورود و مخفی‌سازی فرم‌های اصلی
      *
      * این تابع فرم ورود را نمایش داده و فرم‌های اصلی برنامه را مخفی می‌کند
@@ -51,20 +50,18 @@ public:
      * @param loginFrame فرم ورود که باید مخفی شود
      * @param mainForms لیست فرم‌های اصلی که باید نمایش داده شوند
      * @param colorsFor_colorCombo لیست رنگ‌هایی که در کمبوباکس‌ها نمایش داده می‌شوند
-     * @param mybasicfunctis شی ابزارهای توابع کمکی
      * @param colorCombox_1_Max کمبوباکس انتخاب رنگ برای فیلتر بالاگذر
      * @param colorCombox_2_Min کمبوباکس انتخاب رنگ برای فیلتر پایین‌گذر
      * @param horizontalSlider_FPS اسلایدر تنظیم سرعت درخواست داده
      * @param label_FPSValue لیبل نمایش مقدار فعلی سرعت درخواست داده
      */
     void showMainForm(
-                      QMainWindow *window,
-                      QFrame *loginFrame, QList<QFrame *> mainForms ,
-                      QList<QColor>  colorsFor_colorCombo ,  BasicFunctions mybasicfunctis,
-                      QComboBox *colorCombox_1_Max , QComboBox *colorCombox_2_Min ,
-                      QSlider *horizontalSlider_FPS, QLabel *label_FPSValue
-                      );
-
+        QMainWindow *window,
+        QFrame *loginFrame, QList<QFrame *> mainForms,
+        QList<QColor>  colorsFor_colorCombo,
+        QComboBox *colorCombox_1_Max, QComboBox *colorCombox_2_Min,
+        QSlider *horizontalSlider_FPS, QLabel *label_FPSValue
+        );
 };
 
 #endif // GUIMANAGER_H

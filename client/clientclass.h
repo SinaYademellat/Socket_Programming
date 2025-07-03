@@ -111,7 +111,7 @@ public:
      * @param codeMessageIS کد نوع پیام (برای تعیین نوع درخواست به سرور)
      * @param parametersIS لیستی از پارامترهای مورد نیاز برای تشکیل پیام ارسالی
      */
-    void handle_client_request(int codeMessageIS , QStringList  parametersIS);
+    void handle_client_request(int codeMessageIS, QStringList parametersIS);
 
     // *************** Windo *****************
 
@@ -131,8 +131,6 @@ public:
      * مقدار این متغیر «درست» خواهد بود؛ در غیر این صورت، «نادرست» باقی می‌ماند
      */
     bool passwordAndUsername = false;
-
-
 };
 
 #endif // CLIENTCLASS_H

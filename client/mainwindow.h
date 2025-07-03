@@ -13,7 +13,7 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 QT_END_NAMESPACE
 
@@ -31,7 +31,7 @@ private slots:
     void on_pushButton_form2_clicked();
     void on_pushButton_form3_clicked();
     void on_pushButton_form4_Filter_clicked();
-    void on_pushButton_form4_Clean_clicked();    
+    void on_pushButton_form4_Clean_clicked();
 
 
 private:
@@ -39,9 +39,7 @@ private:
     Ui::MainWindow *ui;
 
     // ------------------------------------------
-
-    BasicFunctions mybasicfunctis;
-    ChartViewHelper chartTest1 ;
+    ChartViewHelper chartTest1;
     ClientClassTcp MainClientIs_Global;
     GuiManager guiManager;
     loginhandler loginManager;
@@ -174,9 +172,8 @@ private:
      *  و این متغییر تا زمانی که کاربر داده صحیح وارد کند فعال است
      *
      */
-    bool _flag_wait_Thread = false ;
+    bool _flag_wait_Thread = false;
 
     // ---------------------
-
 };
 #endif // MAINWINDOW_H

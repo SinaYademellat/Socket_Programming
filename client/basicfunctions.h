@@ -5,16 +5,9 @@
 #include <QtWidgets/QLabel>
 
 /**
- * @brief مجموعه‌ای از توابع کمکی برای بهبود رابط گرافیکی برنامه
- *
- * برای افزودن رنگ، تنظیم نوار لغزنده و تغییر رنگ وضعیت سرور استفاده می‌شوند
- * بیشتر برای تسهیل و مرتب‌سازی کد در رابط کرافیکی است
+ * @brief فضای نام برای توابع کمکی رابط گرافیکی
  */
-class BasicFunctions
-{
-public:
-    BasicFunctions();
-
+namespace BasicUI {
     /**
      * @brief افزودن رنگ‌ها
      *
@@ -25,7 +18,9 @@ public:
      *
      * @note کد رنگ‌ها می‌شود اندیس همین لیست رنگ‌ها که در کنار رنگ‌ها نمایش داده‌میشود
      */
-    void AddColorItemToQcomBox(QComboBox *combox ,const QList<QColor> &colorsItem);
+    void AddColorItemToQcomBox(QComboBox *combox, const QList<QColor> &colorsItem);
+
+
 
     /**
      * @brief مقداردهی به نوار لغزنده افقی
@@ -38,7 +33,8 @@ public:
      * @param singleStep گام حرکت در هر بار تغییر
      * @param SetValue مقدار اولیه برای نوار لغزنده
      */
-    void SetGuiBlineBar(QSlider *myHorizonalSlider ,int minRang , int maxRang , int singleStep , int SetValue);
+    void SetGuiBlineBar(QSlider *myHorizonalSlider, int minRang, int maxRang, int singleStep, int SetValue);
+
 
     /**
      * @brief تغییر رنگ آیکون وضعیت سرور
@@ -54,8 +50,6 @@ public:
      * setServerStatusColor(statusIcon, "green"); // نمایش وضعیت "وصل بودن" سرور
      * @endcode
      */
-    void setServerStatusColor(QLabel *statusIcon ,QString colorIs);
-};
-
-
+    void setServerStatusColor(QLabel *statusIcon, QString colorIs);
+}
 #endif // BASICFUNCTIONS_H

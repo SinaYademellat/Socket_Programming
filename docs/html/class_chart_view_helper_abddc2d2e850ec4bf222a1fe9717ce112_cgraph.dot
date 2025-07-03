@@ -1,0 +1,21 @@
+digraph "ChartViewHelper::plotChartWithMin_and_MaxFilter"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="ChartViewHelper::plotChart\lWithMin_and_MaxFilter",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="هم‌زمان فیلتر پایین‌گذر و بالاگذر"];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="ChartViewHelper::_plotChart\lWithMin_and_MaxFilte_BarChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_chart_view_helper.html#a851a6e70cd1503dde9f47d0036d422b6",tooltip="فیلتر بالا گذر و پایین گذر برای حالت گسسته"];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="ChartViewHelper::_plotChart\lWithMin_and_MaxFilte_LineChar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_chart_view_helper.html#a15fb9c1de16ba306ee4319aa1d69bfaf",tooltip="فیلتر بالا گذر و پایین گذر برای حالت پیوسته"];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="ChartViewHelper::appendMasked\lSeriesByLowerBound",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_chart_view_helper.html#a455257413900c969958bf01814dc1b64",tooltip="ساخت سری‌های کران بالا و کران پایین برای حساب کردن مساحت فیلترشده"];
+  Node3 -> Node5 [id="edge4_Node000003_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="ChartViewHelper::appendMasked\lSeriesByUpperBound",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_chart_view_helper.html#a44ba1265fed2d71ca4e61c3b4f56f655",tooltip="ساخت سری‌های کران بالا و کران پایین برای حساب کردن مساحت فیلترشده"];
+  Node3 -> Node6 [id="edge5_Node000003_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="ChartViewHelper::findX",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_chart_view_helper.html#a2233b809143957aebc5592a05b79a754",tooltip="محاسبه محل تقاطع"];
+  Node1 -> Node7 [id="edge6_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="ChartViewHelper::setupChart\lAppearance",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_chart_view_helper.html#a6dc5562d8e7d51aa481f4b7543c8abc1",tooltip="تنظیم ظاهر و ویژگی‌های پایه نمودار"];
+}

@@ -1,7 +1,0 @@
-<map id="GuiManager::showMainForm" name="GuiManager::showMainForm">
-<area shape="rect" id="Node000001" title="نمایش فرم‌های اصلی برنامه و مخفی کردن فرم ورود" alt="" coords="5,43,194,69"/>
-<area shape="rect" id="Node000002" href="$class_basic_functions.html#ac1ceefd9302841384f17a93613acabb3" title="افزودن رنگ‌ها" alt="" coords="259,5,432,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,42,243,36,244,41,194,47"/>
-<area shape="rect" id="Node000003" href="$class_basic_functions.html#a42e706dc7510a66dfc3511e4023552d4" title="مقداردهی به نوار لغزنده افقی" alt="" coords="242,72,450,99"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,65,226,68,226,74,194,70"/>
-</map>
