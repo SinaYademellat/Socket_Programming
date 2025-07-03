@@ -1,7 +1,0 @@
-<map id="generateMessage::Run" name="generateMessage::Run">
-<area shape="rect" id="Node000001" title="ساخت پیام نهایی برای ارسال" alt="" coords="5,47,162,73"/>
-<area shape="rect" id="Node000002" href="$classgenerate_message.html#aecbdf5608b97ff1be34002af69b839d6" title="تولید پیام احراز هویت" alt="" coords="210,5,392,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,45,194,40,195,46,163,51"/>
-<area shape="rect" id="Node000003" href="$classgenerate_message.html#a8c39fc97ad4521c91e6aa3d824e60780" title="تولید پیام دریافت اطلاعات" alt="" coords="210,72,392,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,69,195,74,194,80,162,75"/>
-</map>

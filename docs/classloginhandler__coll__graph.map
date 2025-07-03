@@ -1,7 +1,0 @@
-<map id="loginhandler" name="loginhandler">
-<area shape="rect" id="Node000001" title="کلاس بررسی و مدیریت ورود کاربران" alt="" coords="22,203,113,229"/>
-<area shape="rect" id="Node000002" href="$class_client_class_tcp.html" title="کلاس مدیریت اتصال در سمت کلاینت" alt="" coords="12,104,123,131"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,146,70,202,65,202,65,146"/>
-<area shape="rect" id="Node000003" href="$classgenerate_message.html" title="کلاس ساخت پیام برای ارتباط با سرور" alt="" coords="5,5,130,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="70,48,70,104,65,104,65,48"/>
-</map>

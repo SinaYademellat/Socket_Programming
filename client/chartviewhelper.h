@@ -38,7 +38,7 @@ private:
      * @param treshould مقدار آستانه
      * @return اندیس اولین داده‌ای که شرایط را دارد
      */
-    int  find_data_conect(int curentindex, QList<int> data, int treshould);
+    int find_data_conect(int curentindex, QList<int> data, int treshould);
     /**
      * @brief محاسبه محل تقاطع
      * @param x0  نقطه اول
@@ -48,7 +48,7 @@ private:
      * @param Y خط ثابت فیلتذر مد نظر
      * @return مقدار محل تقاطع نمودار با خط فیلتر
      */
-    float findX(float x0, float y0, float x1 , float y1 ,float Y );
+    float findX(float x0, float y0, float x1, float y1, float Y );
 
     /**
      * @brief ساخت سری‌های کران بالا و کران پایین برای حساب کردن مساحت فیلترشده
@@ -68,7 +68,7 @@ private:
      *
      * @warning upperMask ,lowMask باید خالی باشد
      */
-    void appendMaskedSeriesByLowerBound(QList<float>& HitLine_X, QList<float>& X_low, QList<int>&Y_low , QLineSeries *upperMask , QLineSeries *lowMask,int Threshold_min);
+    void appendMaskedSeriesByLowerBound(QList<float>& HitLine_X, QList<float>& X_low, QList<int>&Y_low, QLineSeries *upperMask, QLineSeries *lowMask, int Threshold_min);
     //  ---------> min
 
     /**
@@ -77,13 +77,13 @@ private:
      * داده‌های ورودی که از مقدار آستانه کم‌تر یا مساوی‌ باشد
      * <br>
      * آن ستون را به کد رنگ مشخص شده تغییر رنگ می‌دهد
-
+     *
      * @param chart_input  داده‌ها در این شی نمایش داده می‌شوند
      * @param DataForPlotIs  داده‌های ورودی
      * @param low_bound  کران پایین
      * @param low_colorCode کد رنگ کران پایین
      */
-    void _plotChartWithMinFilter_BarChar(QChart *chart_input , const QList<int>& DataForPlotIs ,int low_bound, int low_colorCode );
+    void _plotChartWithMinFilter_BarChar(QChart *chart_input, const QList<int>& DataForPlotIs, int low_bound, int low_colorCode );
     /**
      * @brief فیلتر پایین گذر برای حالت پیوسته
      *
@@ -95,7 +95,7 @@ private:
      * @param low_bound  کران پایین
      * @param low_colorCode کد رنگ کران پایین
      */
-    void _plotChartWithMinFilter_LineChar(QChart *chart_input , const QList<int>& DataForPlotIs ,int low_bound, int low_colorCode );
+    void _plotChartWithMinFilter_LineChar(QChart *chart_input, const QList<int>& DataForPlotIs, int low_bound, int low_colorCode );
 
 
     /**
@@ -105,7 +105,7 @@ private:
      *
      * @see	appendMaskedSeriesByLowerBound
      */
-    void appendMaskedSeriesByUpperBound(QList<float>& HitLine_X, QList<float>& X_low, QList<int>&Y_low , QLineSeries *upperMask , QLineSeries *lowMask,int Threshold_max);
+    void appendMaskedSeriesByUpperBound(QList<float>& HitLine_X, QList<float>& X_low, QList<int>&Y_low, QLineSeries *upperMask, QLineSeries *lowMask, int Threshold_max);
     //  ---------> Max
 
     /**
@@ -115,7 +115,7 @@ private:
      *
      * @see	_plotChartWithMinFilter_BarChar
      */
-    void _plotChartWithMaxFilter_BarChar(QChart *chart_input , const QList<int>& DataForPlotIs  ,int Up_bound, int Up_colorCode );
+    void _plotChartWithMaxFilter_BarChar(QChart *chart_input, const QList<int>& DataForPlotIs, int Up_bound, int Up_colorCode );
 
 
     /**
@@ -125,7 +125,7 @@ private:
      *
      * @see	_plotChartWithMinFilter_LineChar
      */
-    void _plotChartWithMaxFilter_LineChar(QChart *chart_input , const QList<int>& DataForPlotIs ,int Up_bound, int Up_colorCode );
+    void _plotChartWithMaxFilter_LineChar(QChart *chart_input, const QList<int>& DataForPlotIs, int Up_bound, int Up_colorCode );
 
     //  ---------> Both
 
@@ -147,7 +147,7 @@ private:
      * @see	_plotChartWithMaxFilter_BarChar
      * @see	_plotChartWithMinFilter_BarChar
      */
-    void _plotChartWithMin_and_MaxFilte_BarChar(QChart *chart_input , const QList<int>& DataForPlotIs ,int low_bound, int low_colorCode,int Up_bound, int Up_colorCode);
+    void _plotChartWithMin_and_MaxFilte_BarChar(QChart *chart_input, const QList<int>& DataForPlotIs, int low_bound, int low_colorCode, int Up_bound, int Up_colorCode);
 
 
     /**
@@ -168,7 +168,7 @@ private:
      * @see	_plotChartWithMaxFilter_LineChar
      * @see	_plotChartWithMinFilter_LineChar
      */
-    void _plotChartWithMin_and_MaxFilte_LineChar(QChart *chart_input , const QList<int>& DataForPlotIs ,int low_bound, int low_colorCode,int Up_bound, int Up_colorCode);
+    void _plotChartWithMin_and_MaxFilte_LineChar(QChart *chart_input, const QList<int>& DataForPlotIs, int low_bound, int low_colorCode, int Up_bound, int Up_colorCode);
 
 
 public:
@@ -208,7 +208,7 @@ public:
      * @param DataForPlotIs داده‌های برای نمایش
      *
      */
-    void PlotChart(QFrame *chartFrame_input ,  const QList<int>& DataForPlotIs);
+    void PlotChart(QFrame *chartFrame_input,  const QList<int>& DataForPlotIs);
 
     // ------------------------------------------
 
@@ -258,7 +258,7 @@ public:
      * @see	_plotChartWithMin_and_MaxFilte_BarChar
      * @see	_plotChartWithMin_and_MaxFilte_LineChar
      */
-    void plotChartWithMin_and_MaxFilter(QFrame *chartFrame, const QList<int>& data, int minValue, int minColor,int maxValue, int maxColor);
+    void plotChartWithMin_and_MaxFilter(QFrame *chartFrame, const QList<int>& data, int minValue, int minColor, int maxValue, int maxColor);
 };
 
 #endif // CHARTVIEWHELPER_H

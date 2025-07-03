@@ -28,7 +28,7 @@ private:
      *
      * داده‌های که بعد از عدد کد درخواست در درخواست کلاینت قرار میگیرد
      */
-    QStringList parameters ;
+    QStringList parameters;
 
     /**
      * @brief تولید پیام احراز هویت
@@ -87,7 +87,6 @@ public:
      * @return رشتهٔ نهایی پیام برای ارسال به سرور
      */
     QString Run();
-
 };
 
 #endif // GENERATEMESSAGE_H
