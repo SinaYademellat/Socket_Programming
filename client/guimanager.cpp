@@ -41,3 +41,14 @@ void GuiManager::showMainForm (QMainWindow *window, QFrame *loginFrame, QList<QF
         label_FPSValue->setText (QString::number (decimalValue, 'f', 2));
     });
 }
+
+
+
+void GuiManager::setIcons (QLabel *BarIcons, QLabel *LineIcons)
+{
+    QPixmap pixmapBar (":/icons/bar_chart.png");
+    BarIcons->setPixmap (pixmapBar);
+
+    QPixmap pixmapLine (":/icons/line_chart.png");
+    LineIcons->setPixmap (pixmapLine);
+}

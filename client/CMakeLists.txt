@@ -30,6 +30,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         clientclass.h clientclass.cpp
         loginhandler.h loginhandler.cpp
         guimanager.h guimanager.cpp
+        resources.qrc
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Ui_for_Hw1 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

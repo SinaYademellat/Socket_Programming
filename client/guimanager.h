@@ -62,6 +62,17 @@ public:
         QComboBox *colorCombox_1_Max, QComboBox *colorCombox_2_Min,
         QSlider *horizontalSlider_FPS, QLabel *label_FPSValue
         );
+
+
+    /**
+     * @brief تبدیل لیبل‌ها به آیکون تصویری
+     *
+     * در ایت تابع باتوجه به فایل آدرس‌های تصاویر لیبل‌ها را به شکل آیکون تصویری تبدیل کردیم
+     *
+     * @param BarIcons لیبل نماد نمودار گسسته
+     * @param LineIcons لیبل نماد نمودار پیوسته
+     */
+    void setIcons(QLabel *BarIcons, QLabel *LineIcons);
 };
 
 #endif // GUIMANAGER_H

@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/">
+    <file>icons/bar_chart.png</file>
+    <file>icons/line_chart.png</file>
+	<file>styles/style.qss</file>
+  </qresource>
+</RCC>

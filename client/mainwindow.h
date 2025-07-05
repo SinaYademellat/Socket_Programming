@@ -36,16 +36,6 @@ private slots:
 
 private:
 
-    Ui::MainWindow *ui;
-
-    // ------------------------------------------
-    ChartViewHelper chartTest1;
-    ClientClassTcp MainClientIs_Global;
-    GuiManager guiManager;
-    loginhandler loginManager;
-
-    // ------------------------------------------
-
 
     /**
      * @brief بررسی خالی نبودن فیلدهای ضروری در فرم ورود
@@ -146,13 +136,6 @@ private:
 
     // ------------------------------------------
 
-    /**
-     * @brief  اجرای متناوب درخواست داده
-     *
-     * این نخ یا همان تایمر برای پیاده‌سازی امکان ارسال درخواست به سرور بصورت متناوب است
-     *
-     */
-    QTimer *timer = nullptr;
 
     /**
      * @brief به‌روزرسانی  یک نخ (Thread)
@@ -160,6 +143,25 @@ private:
      * در صورتی که نخ در حال اجرا باشد، آن را مجدداً به‌روزرسانی می‌کند تا از اجرای صحیح اطمینان حاصل شود.
      */
     void _RefreshThread();
+
+
+
+    // *************** Variable  *****************
+
+    Ui::MainWindow *ui;
+
+    ChartViewHelper chartTest1;
+    ClientClassTcp MainClientIs_Global;
+    GuiManager guiManager;
+    loginhandler loginManager;
+
+    /**
+     * @brief  اجرای متناوب درخواست داده
+     *
+     * این نخ یا همان تایمر برای پیاده‌سازی امکان ارسال درخواست به سرور بصورت متناوب است
+     *
+     */
+    QTimer *timer = nullptr;
 
 
     /**

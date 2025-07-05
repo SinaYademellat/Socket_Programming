@@ -57,7 +57,9 @@ int ChartViewHelper::find_data_conect (int curentindex,  QList<int> data, int tr
 }
 
 
-float ChartViewHelper::findX (float x0, float y0, float x1, float y1, float Y)
+float ChartViewHelper::findX (float x0, float y0,
+    float x1, float y1,
+    float Y)
 {
     float m  = (y1 -y0)/(x1-x0);
 
@@ -67,7 +69,9 @@ float ChartViewHelper::findX (float x0, float y0, float x1, float y1, float Y)
 
 // -----------------------  << Min >>
 //---------- (Bar)
-void ChartViewHelper::_plotChartWithMinFilter_BarChar (QChart *chart_input, const QList<int>& DataForPlotIs, int low_bound, int low_colorCode ){
+void ChartViewHelper::_plotChartWithMinFilter_BarChar (QChart *chart_input,
+    const QList<int>& DataForPlotIs,
+    int low_bound, int low_colorCode ){
     // Bar chart
     QBarSet *set_N = new QBarSet ("Normal");
     QBarSet *set_L = new QBarSet ("Min");
@@ -97,7 +101,10 @@ void ChartViewHelper::_plotChartWithMinFilter_BarChar (QChart *chart_input, cons
 }
 //---------- (Line)
 // setMask
-void ChartViewHelper::appendMaskedSeriesByLowerBound (QList<float> &HitLine_X, QList<float> &X_low, QList<int> &Y_low, QLineSeries *upperMask, QLineSeries *lowMask, int Threshold_min)
+void ChartViewHelper::appendMaskedSeriesByLowerBound (QList<float> &HitLine_X,
+    QList<float> &X_low, QList<int> &Y_low,
+    QLineSeries *upperMask, QLineSeries *lowMask,
+    int Threshold_min)
 {
     int i=0; int j=0; int N=0;
     while((i<X_low.size ()) && (j<HitLine_X.size ()) )
@@ -157,7 +164,9 @@ void ChartViewHelper::appendMaskedSeriesByLowerBound (QList<float> &HitLine_X, Q
     }
 }
 // plot
-void ChartViewHelper::_plotChartWithMinFilter_LineChar (QChart *chart_input, const QList<int> &DataForPlotIs, int low_bound, int low_colorCode)
+void ChartViewHelper::_plotChartWithMinFilter_LineChar (QChart *chart_input,
+    const QList<int> &DataForPlotIs,
+    int low_bound, int low_colorCode)
 {
     // Line chart
     QLineSeries *mainSeries = new QLineSeries ();
@@ -216,7 +225,9 @@ void ChartViewHelper::_plotChartWithMinFilter_LineChar (QChart *chart_input, con
 
 // -----------------------  << Max >>
 //---------- (Bar)
-void ChartViewHelper::_plotChartWithMaxFilter_BarChar (QChart *chart_input, const QList<int> &DataForPlotIs, int Up_bound, int Up_colorCode)
+void ChartViewHelper::_plotChartWithMaxFilter_BarChar (QChart *chart_input,
+    const QList<int> &DataForPlotIs,
+    int Up_bound, int Up_colorCode)
 {
     // Bar chart
 
@@ -254,7 +265,10 @@ void ChartViewHelper::_plotChartWithMaxFilter_BarChar (QChart *chart_input, cons
 //---------- (Line)
 // setMask
 
-void ChartViewHelper::appendMaskedSeriesByUpperBound (QList<float> &HitLine_X, QList<float> &X_low, QList<int> &Y_low, QLineSeries *upperMask, QLineSeries *lowMask, int Threshold_max)
+void ChartViewHelper::appendMaskedSeriesByUpperBound (QList<float> &HitLine_X,
+    QList<float> &X_low, QList<int> &Y_low,
+    QLineSeries *upperMask, QLineSeries *lowMask,
+    int Threshold_max)
 {
     int i=0; int j=0; int N=0;
     while((i<X_low.size ()) && (j<HitLine_X.size ()) )
@@ -315,7 +329,9 @@ void ChartViewHelper::appendMaskedSeriesByUpperBound (QList<float> &HitLine_X, Q
 }
 
 // plot
-void ChartViewHelper::_plotChartWithMaxFilter_LineChar (QChart *chart_input, const QList<int> &DataForPlotIs, int Up_bound, int Up_colorCode)
+void ChartViewHelper::_plotChartWithMaxFilter_LineChar (QChart *chart_input,
+    const QList<int> &DataForPlotIs,
+    int Up_bound, int Up_colorCode)
 {
     // Line chart
     QLineSeries *mainSeries = new QLineSeries ();
@@ -375,7 +391,10 @@ void ChartViewHelper::_plotChartWithMaxFilter_LineChar (QChart *chart_input, con
 
 // -----------------------  << Both >>
 
-void ChartViewHelper::_plotChartWithMin_and_MaxFilte_BarChar (QChart *chart_input, const QList<int> &DataForPlotIs, int low_bound, int low_colorCode, int Up_bound, int Up_colorCode)
+void ChartViewHelper::_plotChartWithMin_and_MaxFilte_BarChar (QChart *chart_input,
+    const QList<int> &DataForPlotIs,
+    int low_bound, int low_colorCode,
+    int Up_bound, int Up_colorCode)
 {
     // Bar chart
     QBarSet *set_U = new QBarSet ("Max");
@@ -421,7 +440,10 @@ void ChartViewHelper::_plotChartWithMin_and_MaxFilte_BarChar (QChart *chart_inpu
     chart_input->addSeries (series);
 }
 
-void ChartViewHelper::_plotChartWithMin_and_MaxFilte_LineChar (QChart *chart_input, const QList<int> &DataForPlotIs, int low_bound, int low_colorCode, int Up_bound, int Up_colorCode){
+void ChartViewHelper::_plotChartWithMin_and_MaxFilte_LineChar (QChart *chart_input,
+    const QList<int> &DataForPlotIs,
+    int low_bound, int low_colorCode,
+    int Up_bound, int Up_colorCode){
     // Line chart
     QLineSeries *mainSeries = new QLineSeries ();
 
@@ -527,7 +549,7 @@ void ChartViewHelper::PlotChart (QFrame *chartFrame, const QList<int> &DataForPl
 {
     QChart *chart = new QChart ();
 
-    if (this->mode == 'B')
+    if (this->mode == ChartMode::Bar)
     {
         // Bar chart
         QBarSet *set = new QBarSet ("");
@@ -553,11 +575,13 @@ void ChartViewHelper::PlotChart (QFrame *chartFrame, const QList<int> &DataForPl
     this->setupChartAppearance (chart, chartFrame);
 }
 // -------------------------------
-void ChartViewHelper::plotChartWithMinFilter (QFrame *chartFrame, const QList<int>& data, int minValue, int minColor)
+void ChartViewHelper::plotChartWithMinFilter (QFrame *chartFrame,
+    const QList<int>& data,
+    int minValue, int minColor)
 {
     QChart *chart = new QChart ();
 
-    if (this->mode == 'B')
+    if (this->mode ==ChartMode::Bar)
     {
         this->_plotChartWithMinFilter_BarChar (chart, data, minValue, minColor);
     }
@@ -569,11 +593,13 @@ void ChartViewHelper::plotChartWithMinFilter (QFrame *chartFrame, const QList<in
     this->setupChartAppearance (chart, chartFrame);
 }
 // ----------------------
-void ChartViewHelper::plotChartWithMaxFilter (QFrame *chartFrame, const QList<int> &data, int maxValue, int maxColor)
+void ChartViewHelper::plotChartWithMaxFilter (QFrame *chartFrame,
+    const QList<int> &data,
+    int maxValue, int maxColor)
 {
     QChart *chart = new QChart ();
 
-    if (this->mode == 'B')
+    if (this->mode ==ChartMode::Bar)
     {
         this->_plotChartWithMaxFilter_BarChar (chart, data, maxValue, maxColor);
     }
@@ -584,11 +610,14 @@ void ChartViewHelper::plotChartWithMaxFilter (QFrame *chartFrame, const QList<in
     this->setupChartAppearance (chart, chartFrame);
 }
 // ----------------------
-void ChartViewHelper::plotChartWithMin_and_MaxFilter (QFrame *chartFrame, const QList<int> &data, int minValue, int minColor, int maxValue, int maxColor)
+void ChartViewHelper::plotChartWithMin_and_MaxFilter (QFrame *chartFrame,
+    const QList<int> &data,
+    int minValue, int minColor,
+    int maxValue, int maxColor)
 {
     QChart *chart = new QChart ();
 
-    if (this->mode == 'B')
+    if (this->mode == ChartMode::Bar)
     {
         this->_plotChartWithMin_and_MaxFilte_BarChar (chart, data, minValue, minColor, maxValue, maxColor );
     }
