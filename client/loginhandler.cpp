@@ -74,7 +74,11 @@ bool loginhandler::validateAndSet_password (const QString &Password)
 // ------------------
 
 
-bool loginhandler::validateFormInputs (QMainWindow *window, const QString& IP_input, const QString& Port_input, const QString& username_input, const QString& password_input)
+bool loginhandler::validateFormInputs (QMainWindow *window,
+    const QString&                                  IP_input,
+    const QString&                                  Port_input,
+    const QString&                                  username_input,
+    const QString&                                  password_input)
 {
     // ----------- IP
     if(this->validateAndSet_IP (IP_input))

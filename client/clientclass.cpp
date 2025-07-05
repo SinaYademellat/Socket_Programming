@@ -79,10 +79,10 @@ QString ClientClassTcp::send_client_request ()
 
 // +++++++++++++++ << public >> ++++++++++++++
 
-void ClientClassTcp::handle_client_request (int codeMessageIS, QStringList parametersIS)
+void ClientClassTcp::handle_client_request (int message_type, QStringList messageParams)
 {
-    this->_generater.setCodeMessage (codeMessageIS);
-    this->_generater.setParameters (parametersIS);
+    this->_generater.setCodeMessage (message_type);
+    this->_generater.setParameters (messageParams);
 
     QString Server_Anser = this->send_client_request ();
 
@@ -93,7 +93,7 @@ void ClientClassTcp::handle_client_request (int codeMessageIS, QStringList param
         return;
     }
 
-    switch (codeMessageIS)
+    switch (message_type)
     {
     case 1: {
         if(Server_Anser == "-1")

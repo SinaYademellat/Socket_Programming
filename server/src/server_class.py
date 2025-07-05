@@ -3,7 +3,7 @@ import numpy as np
 import os
 import random
 
-from file_manager import FileManager 
+from .file_manager import FileManager 
 # ================================================================================
 def isIpV4(inputIp:str)->bool:
     try:
@@ -53,7 +53,11 @@ def check_socket_bindable(ip,port)->bool:
             except OSError as e:
                 return False
 
-def DataLoader(dataPath:str):
+def DataLoader(file_name_in_db:str = ''):
+
+    PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    dataPath = os.path.join(PROJECT_ROOT, 'DataBase', file_name_in_db)
+    
     if not os.path.exists(dataPath):
         print(f"File not found: {dataPath}")
         return None
@@ -77,7 +81,7 @@ class ServerClass:
 
         self.current_request_list = None
         self.curentPassword   = 'testPasspart2'
-        self.raw_data = DataLoader(dataPath='GenerateData/my_data.npy')
+        self.raw_data = DataLoader(file_name_in_db='data.npy')
         self.index_dataLoder = 0
 
     def __repr__(self) -> str:
@@ -179,7 +183,7 @@ class ServerClass:
         return True
 
     def canRunServer(self , configPath)->bool:
-        if(self.loadServerConfig(configPath)):
+        if((self.loadServerConfig(configPath) )and (self.raw_data is not None)):
             print('Json file is Load.')
             if(self.checkServerConfig()):
                 print('-'*20)
@@ -282,5 +286,4 @@ class ServerClass:
             print(f"<< {number} >>  Error: {e}")
 
 # +++++++++++++++++++++++++++++++++++++++++
-
 

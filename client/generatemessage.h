@@ -14,44 +14,8 @@
  */
 class generateMessage
 {
-private:
-    /**
-     * @brief  نوع پیام
-     *
-     * مقدار عددی که مشخص می‌کند نوع درخواست چیست ( احراز هویت، دریافت اطلاعات)
-     *
-     */
-    int codeMessage = -1;
-
-    /**
-     * @brief لیست پارامترهای همراه پیام
-     *
-     * داده‌های که بعد از عدد کد درخواست در درخواست کلاینت قرار میگیرد
-     */
-    QStringList parameters;
-
-    /**
-     * @brief تولید پیام احراز هویت
-     *
-     * از پارامترهای موجود برای ساختن رشته احراز هویت استفاده می‌شود
-     * -  << 1 userName password >>
-     * -  << 1 parameters[0] parameters[1] >>
-     * @return رشته درخواست احراز هویت
-     */
-    QString generate_Authentication();
-
-    /**
-     * @brief تولید پیام دریافت اطلاعات
-     *
-     * از پارامترهای موجود برای ساختن رشته دریافت اطلاعات استفاده می‌شود
-     * -  << 2 Token Mode Range >>
-     * -  << 2 parameters[0] parameters[1] parameters[2]>>
-     *
-     * @return رشته درخواست دریافت اطلاعات
-     */
-    QString generate_DefaultRequest();
-
 public:
+
     /**
      * @brief سازندهٔ پیش‌فرض کلاس
      */
@@ -65,6 +29,7 @@ public:
      * @param codeIS عدد مشخص‌کنندهٔ نوع پیام
      */
     void setCodeMessage(int codeIS);
+
     /**
      * @brief تنظیم لیست پارامترهای پیام
      *
@@ -87,6 +52,50 @@ public:
      * @return رشتهٔ نهایی پیام برای ارسال به سرور
      */
     QString Run();
+
+    // *************** Variable  *****************
+
+
+
+private:
+
+    /**
+     * @brief تولید پیام احراز هویت
+     *
+     * از پارامترهای موجود برای ساختن رشته احراز هویت استفاده می‌شود
+     * -  << 1 userName password >>
+     * -  << 1 parameters[0] parameters[1] >>
+     * @return رشته درخواست احراز هویت
+     */
+    QString generate_Authentication();
+
+    /**
+     * @brief تولید پیام دریافت اطلاعات
+     *
+     * از پارامترهای موجود برای ساختن رشته دریافت اطلاعات استفاده می‌شود
+     * -  << 2 Token Mode Range >>
+     * -  << 2 parameters[0] parameters[1] parameters[2]>>
+     *
+     * @return رشته درخواست دریافت اطلاعات
+     */
+    QString generate_DefaultRequest();
+
+    // *************** Variable  *****************
+
+    /**
+     * @brief  نوع پیام
+     *
+     * مقدار عددی که مشخص می‌کند نوع درخواست چیست ( احراز هویت، دریافت اطلاعات)
+     *
+     */
+    int codeMessage = -1;
+
+    /**
+     * @brief لیست پارامترهای همراه پیام
+     *
+     * داده‌های که بعد از عدد کد درخواست در درخواست کلاینت قرار میگیرد
+     */
+    QStringList parameters;
 };
 
 #endif // GENERATEMESSAGE_H

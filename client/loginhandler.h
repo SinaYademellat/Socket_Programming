@@ -17,16 +17,8 @@
  */
 class loginhandler
 {
-private:
-
-    ClientClassTcp* curentclient = nullptr;
-
-    bool validateAndSet_IP(const QString &ip);
-    bool validateAndSet_Port(QMainWindow *window, const QString &port);
-    bool validateAndSet_username(const QString &username);
-    bool validateAndSet_password(const QString &Password);
-
 public:
+
     /**
      * @brief سازنده کلاس
      *
@@ -44,7 +36,6 @@ public:
      */
     void SetClient(ClientClassTcp* client);
 
-
     /**
      * @brief بررسی و اعتبارسنجی فرم‌های ورود
      *
@@ -61,7 +52,25 @@ public:
      * @return `true` اگر همه ورودی‌ها معتبر باشند
      * @return `false`  در غیر این صورت
      */
-    bool validateFormInputs(QMainWindow *window, const QString& IP_input, const QString& Port_input, const QString& username_input, const QString& password_input);
+    bool validateFormInputs(QMainWindow *    window,
+                            const QString&   IP_input
+                            , const QString& Port_input,
+                            const QString&   username_input,
+                            const QString&   password_input);
+
+    // *************** Variable  *****************
+
+
+private:
+
+    bool validateAndSet_IP(const QString &ip);
+    bool validateAndSet_Port(QMainWindow *window, const QString &port);
+    bool validateAndSet_username(const QString &username);
+    bool validateAndSet_password(const QString &Password);
+
+    // *************** Variable  *****************
+
+    ClientClassTcp* curentclient = nullptr;
 };
 
 #endif // LOGINHANDLER_H

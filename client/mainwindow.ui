@@ -17,7 +17,7 @@
    <string notr="true">background-color: #2E2E2E;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="Form3">
+   <widget class="QFrame" name="ChartDisplayOptionsForm">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -206,9 +206,6 @@ QSlider::add-page:horizontal {
      <property name="text">
       <string/>
      </property>
-     <property name="pixmap">
-      <pixmap>C:/Users/sina/Downloads/icons8-line-chart-64 (1).png</pixmap>
-     </property>
      <property name="scaledContents">
       <bool>true</bool>
      </property>
@@ -225,9 +222,6 @@ QSlider::add-page:horizontal {
      <property name="text">
       <string/>
      </property>
-     <property name="pixmap">
-      <pixmap>C:/Users/sina/Downloads/icons8-bar-chart-48.png</pixmap>
-     </property>
      <property name="scaledContents">
       <bool>true</bool>
      </property>
@@ -242,26 +236,7 @@ QSlider::add-page:horizontal {
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">QRadioButton {
-    color: BLACK;
-}
-QRadioButton::indicator {
-    width: 16px;
-    height: 16px;
-    border-radius: 8px;
-    border: 2px solid #1ABC9C;    
-    background-color: #2C3E50;
-}
-
-QRadioButton::indicator:checked {
-    background-color: #1ABC9C; 
-    border: 2px solid #16A085;
-}
-
-QRadioButton::indicator:unchecked:hover {
-    border: 2px solid #F39C12;
-}
-</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>
@@ -277,33 +252,14 @@ QRadioButton::indicator:unchecked:hover {
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">QRadioButton {
-    color: BLACK;
-}
-QRadioButton::indicator {
-    width: 16px;
-    height: 16px;
-    border-radius: 8px;
-    border: 2px solid #1ABC9C;    
-    background-color: #2C3E50;
-}
-
-QRadioButton::indicator:checked {
-    background-color: #1ABC9C; 
-    border: 2px solid #16A085;
-}
-
-QRadioButton::indicator:unchecked:hover {
-    border: 2px solid #F39C12;
-}
-</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>
      </property>
     </widget>
    </widget>
-   <widget class="QFrame" name="Form4">
+   <widget class="QFrame" name="DataFilterForm">
     <property name="geometry">
      <rect>
       <x>750</x>
@@ -623,7 +579,7 @@ QPushButton:pressed {
       <string>clean</string>
      </property>
     </widget>
-    <widget class="QLabel" name="statusIcon_form1_2">
+    <widget class="QLabel" name="statusIcon_form4">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -649,7 +605,7 @@ QPushButton:pressed {
      </property>
     </widget>
    </widget>
-   <widget class="QFrame" name="Form2">
+   <widget class="QFrame" name="DataSamplingForm">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -689,29 +645,7 @@ QLabel {
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">QRadioButton {
- 	color: #00CFFF;
-    font-family: 'Segoe UI';
-    font-size: 14px;
-   spacing: 8px;
-}
-QRadioButton::indicator {
-    width: 16px;
-    height: 16px;
-    border-radius: 8px;
-    border: 2px solid #1ABC9C;    
-    background-color: #2C3E50;
-}
-
-QRadioButton::indicator:checked {
-    background-color: #1ABC9C; 
-    border: 2px solid #16A085;
-}
-
-QRadioButton::indicator:unchecked:hover {
-    border: 2px solid #F39C12;
-}
-</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Normal</string>
@@ -727,29 +661,7 @@ QRadioButton::indicator:unchecked:hover {
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">QRadioButton {
- 	color: #00CFFF;
-    font-family: 'Segoe UI';
-    font-size: 14px;
-   spacing: 8px;
-}
-QRadioButton::indicator {
-    width: 16px;
-    height: 16px;
-    border-radius: 8px;
-    border: 2px solid #1ABC9C;    
-    background-color: #2C3E50;
-}
-
-QRadioButton::indicator:checked {
-    background-color: #1ABC9C; 
-    border: 2px solid #16A085;
-}
-
-QRadioButton::indicator:unchecked:hover {
-    border: 2px solid #F39C12;
-}
-</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Min</string>
@@ -826,29 +738,7 @@ QLineEdit:focus {
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">QRadioButton {
- 	color: #00CFFF;
-    font-family: 'Segoe UI';
-    font-size: 14px;
-   spacing: 8px;
-}
-QRadioButton::indicator {
-    width: 16px;
-    height: 16px;
-    border-radius: 8px;
-    border: 2px solid #1ABC9C;    
-    background-color: #2C3E50;
-}
-
-QRadioButton::indicator:checked {
-    background-color: #1ABC9C; 
-    border: 2px solid #16A085;
-}
-
-QRadioButton::indicator:unchecked:hover {
-    border: 2px solid #F39C12;
-}
-</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Max</string>
@@ -864,24 +754,30 @@ QRadioButton::indicator:unchecked:hover {
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton {
-color: #00CFFF;
-font-size: 16px;
-font-weight: bold;
-background-color: #2C3E50;
-padding: 4px 8px;
-border-radius: 5px;
-}
+      <string notr="true">
+/* ~~~~~~~~~~~~~~~
+    QPushButton
+ ~~~~~~~~~~~~~~~ */
+ 
 
-QPushButton:hover {
-    background-color: #1ABC9C;
-    color: black;
-}
+ QPushButton {
+ color: #00CFFF;
+ font-size: 16px;
+ font-weight: bold;
+ background-color: #2C3E50;
+ padding: 4px 8px;
+ border-radius: 5px;
+ }
 
-QPushButton:pressed {
-    background-color: #16A085;
-    border: 1px solid #16A085;
-}
+ QPushButton:hover {
+     background-color: #1ABC9C;
+     color: black;
+ }
+
+ QPushButton:pressed {
+     background-color: #16A085;
+     border: 1px solid #16A085;
+ }
 </string>
      </property>
      <property name="text">
@@ -889,7 +785,7 @@ QPushButton:pressed {
      </property>
     </widget>
    </widget>
-   <widget class="QFrame" name="Form1">
+   <widget class="QFrame" name="UserStatusForm">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -978,15 +874,12 @@ background-color: transparent;
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">
-font-size: 18px;;
+      <string notr="true">font-size: 18px;;
 height: 6px;
 margin: 0px;
 border-radius: 3px;
-
 color: #80D8C3;
-background-color: transparent;
-</string>
+background-color: transparent;</string>
      </property>
      <property name="text">
       <string/>
@@ -1111,19 +1004,36 @@ QLabel {
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_2">
+     <item row="5" column="0" colspan="2">
+      <widget class="QLineEdit" name="Passwor_inForm1">
        <property name="styleSheet">
-        <string notr="true">color: #F1C40F;
-font-size: 16px;
-font-weight: bold;
-background-color: #2C3E50;
-padding: 2px 2px;
-border-radius: 5px;
+        <string notr="true">QLineEdit {
+    background-color: #2a2a2a;
+    color: #00CFFF;
+    border: 1px solid #00CFFF;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+    selection-background-color: #00CFFF;
+    selection-color: #1e1e1e;
+}
+
+QLineEdit:hover {
+    border: 1px solid #F39C12;
+}
+
+QLineEdit:focus {
+    border: 1px solid #1ABC9C;
+    background-color: #1e1e1e;
+}
 </string>
        </property>
-       <property name="text">
-        <string>port</string>
+       <property name="echoMode">
+        <enum>QLineEdit::EchoMode::Password</enum>
+       </property>
+       <property name="placeholderText">
+        <string>Password</string>
        </property>
       </widget>
      </item>
@@ -1187,49 +1097,21 @@ QLineEdit:focus {
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="IP_inForm1">
+     <item row="1" column="0" colspan="2">
+      <widget class="QLabel" name="label_UserName_Blue_2">
        <property name="styleSheet">
-        <string notr="true">QLineEdit {
-    background-color: #2a2a2a;
-    color: #00CFFF;
-    border: 1px solid #00CFFF;
-    border-radius: 6px;
-    padding: 6px 8px;
-    font-family: 'Segoe UI';
-    font-size: 20px;
-    selection-background-color: #00CFFF;
-    selection-color: #1e1e1e;
-}
+        <string notr="true">
+font-size: 28px;;
+height: 6px;
+margin: 0px;
+border-radius: 3px;
 
-QLineEdit:hover {
-    border: 1px solid #F39C12;
-}
-
-QLineEdit:focus {
-    border: 1px solid #1ABC9C;
-    background-color: #1e1e1e;
-}
-</string>
-       </property>
-       <property name="placeholderText">
-        <string>127.0.0.2</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label">
-       <property name="styleSheet">
-        <string notr="true">color: #F1C40F;
-font-size: 20px;
-font-weight: bold;
-background-color: #2C3E50;
-padding: 4px 8px;
-border-radius: 5px;
+color: #F1C40F;
+background-color: transparent;
 </string>
        </property>
        <property name="text">
-        <string>IP</string>
+        <string>      Logging form</string>
        </property>
       </widget>
      </item>
@@ -1270,26 +1152,40 @@ QPushButton:pressed {
        </property>
       </widget>
      </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="QLabel" name="label_UserName_Blue_2">
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_2">
        <property name="styleSheet">
-        <string notr="true">
-font-size: 28px;;
-height: 6px;
-margin: 0px;
-border-radius: 3px;
-
-color: #F1C40F;
-background-color: transparent;
+        <string notr="true">color: #F1C40F;
+font-size: 16px;
+font-weight: bold;
+background-color: #2C3E50;
+padding: 2px 2px;
+border-radius: 5px;
 </string>
        </property>
        <property name="text">
-        <string>      Logging form</string>
+        <string>port</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="0" colspan="2">
-      <widget class="QLineEdit" name="Passwor_inForm1">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label">
+       <property name="styleSheet">
+        <string notr="true">color: #F1C40F;
+font-size: 20px;
+font-weight: bold;
+background-color: #2C3E50;
+padding: 4px 8px;
+border-radius: 5px;
+</string>
+       </property>
+       <property name="text">
+        <string>IP</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="IP_inForm1">
        <property name="styleSheet">
         <string notr="true">QLineEdit {
     background-color: #2a2a2a;
@@ -1313,11 +1209,8 @@ QLineEdit:focus {
 }
 </string>
        </property>
-       <property name="echoMode">
-        <enum>QLineEdit::EchoMode::Password</enum>
-       </property>
        <property name="placeholderText">
-        <string>Password</string>
+        <string>127.0.0.2</string>
        </property>
       </widget>
      </item>

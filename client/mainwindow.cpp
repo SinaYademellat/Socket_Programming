@@ -9,7 +9,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi (this);
 
-    guiManager.showLoginForm (this, {this->ui->Form1, this->ui->Form2, this->ui->Form3, this->ui->Form4});
+    guiManager.showLoginForm (this, {
+        this->ui->UserStatusForm, this->ui->DataSamplingForm,
+        this->ui->ChartDisplayOptionsForm, this->ui->DataFilterForm
+    });
 
 
     this->loginManager.SetClient (&this->MainClientIs_Global);
@@ -29,11 +32,15 @@ void MainWindow::on_pushButton_form1_Loggin_clicked ()
         if(this->canEnterDashboard ())
         {
             this->guiManager.showMainForm (this,
-                this->ui->frame_LoggingForm, {this->ui->Form1, this->ui->Form2, this->ui->Form3, this->ui->Form4},
+                this->ui->frame_LoggingForm, {
+                this->ui->UserStatusForm, this->ui->DataSamplingForm,
+                this->ui->ChartDisplayOptionsForm, this->ui->DataFilterForm
+            },
                 this->chartTest1.colorsFor_colorCombo_IS,
                 this->ui->colorCombox_1_Max, this->ui->colorCombox_2_Min,
                 this->ui->horizontalSlider_FPS, this->ui->label_FPSValue
                 );
+            this->guiManager.setIcons (this->ui->label_BarIcon, this->ui->label_LineICON);
         }
         else
         {
@@ -138,12 +145,12 @@ void MainWindow::_SetModeOFChart ()
 {
     if (ui->radioBarChart->isChecked ()) // Bar chart
     {
-        chartTest1.mode ='B';
+        chartTest1.mode = ChartMode::Bar;
     }
     else
     {
         // Line chart
-        chartTest1.mode ='L';
+        chartTest1.mode = ChartMode::Line;
     }
 }
 
@@ -278,12 +285,18 @@ void MainWindow::_Server_Satution_For_requestCode2 ()
         colorForstatusIcon = "green";
         BasicUI::setServerStatusColor (ui->statusIcon_form1_server, colorForstatusIcon);
         BasicUI::setServerStatusColor (ui->statusIcon_form2_server, colorForstatusIcon);
+
+        BasicUI::setServerStatusColor (ui->statusIcon_form3, colorForstatusIcon);
+        BasicUI::setServerStatusColor (ui->statusIcon_form4, colorForstatusIcon);
     }
     else
     {
         colorForstatusIcon = "red";
         BasicUI::setServerStatusColor (ui->statusIcon_form1_server, colorForstatusIcon);
         BasicUI::setServerStatusColor (ui->statusIcon_form2_server, colorForstatusIcon);
+
+        BasicUI::setServerStatusColor (ui->statusIcon_form3, colorForstatusIcon);
+        BasicUI::setServerStatusColor (ui->statusIcon_form4, colorForstatusIcon);
         this->MainClientIs_Global.server_anserData.clear ();
     }
 }
