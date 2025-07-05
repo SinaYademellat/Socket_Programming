@@ -1,4 +1,4 @@
-from server_class import ServerClass
+from src.server_class import ServerClass
 
 def Main() -> int:
     server_1 = ServerClass()
